@@ -37,6 +37,7 @@ const TreeVisualizer = () => {
       }
       else if (indentnum > 0) {
         const newnode = new TreeNode(namenode)
+        // find parent of node blong
         while (indentnum <= nodes[nodes.length - 1][0]) {
           nodes.pop()
         }
@@ -44,12 +45,14 @@ const TreeVisualizer = () => {
         nodes.push([indentnum, newnode])
       }
     }
-    return nodes[0]
+    // reset error
+    setError(null)
+    return nodes[0][1]
   }
   const handleShowTree = () => {
     const resFromParseTree = parseTree(inputValue)
     if (resFromParseTree) {
-      const [, _nodes] = parseTree(inputValue)
+      const _nodes = parseTree(inputValue)
       setNodes(_nodes)
     }
   }
@@ -64,10 +67,10 @@ const TreeVisualizer = () => {
         </p>
       </blockquote>
     </div>
-    {error && !nodes.name && <div className="error_text">
+    {error && <div className="error_text">
       {error}
     </div>}
-    {nodes.name &&
+    {nodes.name && !error &&
       <div style={{ width: '100vw', height: '100vh' }} ref={containerRef}>
         <Tree data={nodes} orientation="vertical" translate={translate} />
       </div>
