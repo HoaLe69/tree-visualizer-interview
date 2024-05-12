@@ -1,7 +1,7 @@
 # About project
 This project will visualize Tree from input user based on indent
 ## `What did I do ??`
-- Build function **parserTree** : func has one param , output this function is object root , and inside object root will be list child node , and similarly inside child nodes there will be other child nodes
+- Build function **parserTree** : func has one param , func will parser input from user and convert it object root , and inside object root will be list child node , and similarly inside child nodes there will be other child nodes
 - customHook **useCenterTree** : This hook helps center tree on the initial load
 ## Let't try with example input
 ```
